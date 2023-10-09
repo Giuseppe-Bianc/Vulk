@@ -77,16 +77,6 @@ macro(Vulk_setup_options)
       Vulk_ENABLE_PCH
       Vulk_ENABLE_CACHE)
   endif()
-
-  Vulk_check_libfuzzer_support(LIBFUZZER_SUPPORTED)
-  if(LIBFUZZER_SUPPORTED AND (Vulk_ENABLE_SANITIZER_ADDRESS OR Vulk_ENABLE_SANITIZER_THREAD OR Vulk_ENABLE_SANITIZER_UNDEFINED))
-    set(DEFAULT_FUZZER ON)
-  else()
-    set(DEFAULT_FUZZER OFF)
-  endif()
-
-  option(Vulk_BUILD_FUZZ_TESTS "Enable fuzz testing executable" ${DEFAULT_FUZZER})
-
 endmacro()
 
 macro(Vulk_global_options)

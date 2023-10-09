@@ -21,7 +21,6 @@ function(Vulk_setup_dependencies)
         GITHUB_REPOSITORY
         "gabime/spdlog"
         OPTIONS
-        "SPDLOG_TIDY ON"
         "SPDLOG_FMT_EXTERNAL ON"
         "SPDLOG_ENABLE_PCH ON"
         "SPDLOG_BUILD_PIC ON"
