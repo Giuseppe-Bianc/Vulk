@@ -30,7 +30,6 @@ jobs:
       matrix:
         os:
           - ubuntu-20.04
-          - macos-10.15
           - windows-2019
         compiler:
           # you can specify the version after `-` like "llvm-15.0.2".
@@ -125,7 +124,7 @@ jobs:
           script: |
             core.setFailed('There is a mismatch between configured llvm compiler and clang-tidy version chosen')
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Cache
         uses: ./.github/actions/setup_cache
@@ -136,7 +135,7 @@ jobs:
           generator: ${{ matrix.generator }}
 
       - name: Project Name
-        uses: cardinalby/export-env-action@v2
+        uses: cardinalby/export-env-action@2.2.0
         with:
           envFile: '.github/constants.env'
 
@@ -198,7 +197,7 @@ jobs:
 
 
       - name: Publish to codecov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v4.0.0-beta.3
         with:
           flags: ${{ runner.os }}
           name: ${{ runner.os }}-coverage
