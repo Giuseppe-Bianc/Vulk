@@ -1,4 +1,10 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.21...3.27)  # Aggiornare alla versione minima di CMake necessaria
+
+if(${CMAKE_VERSION} VERSION_LESS 3.21)
+    cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
+else()
+    cmake_policy(VERSION 3.27)
+endif()
 
 # This template attempts to be "fetch_content"-able
 # so that it works well with tools like CPM or other
@@ -13,6 +19,27 @@ endif()
 # -Wpedantic being enabled and -std=c++20 and -std=gnu++20 for example
 # when compiling with PCH enabled
 set(CMAKE_CXX_EXTENSIONS OFF)
+if (POLICY CMP0069)
+    cmake_policy(SET CMP0069 NEW)
+endif()
+if (POLICY CMP0077)
+    cmake_policy(SET CMP0077 NEW)
+endif()
+if (POLICY CMP0126)
+    cmake_policy(SET CMP0126 NEW)
+endif()
+if (POLICY CMP0127)
+    cmake_policy(SET CMP0127 NEW)
+endif()
+if (POLICY CMP0128)
+    cmake_policy(SET CMP0128 NEW)
+endif()
+if(POLICY CMP0149)
+    cmake_policy(SET CMP0149 NEW)
+endif()
+if(POLICY CMP0147)
+    cmake_policy(SET CMP0147 NEW)
+endif()
 
 # Set the project name and language
 project(
@@ -92,7 +119,7 @@ if(MSVC)
 endif()
 
 # set the startup project for the "play" button in MSVC
-set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT intro)
+set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT code)
 
 if(CMAKE_SKIP_INSTALL_RULES)
   return()
@@ -104,7 +131,7 @@ include(cmake/PackageProject.cmake)
 # we know we want to ship
 Vulk_package_project(
   TARGETS
-  intro
+  code
   Vulk_options
   Vulk_warnings
   # FIXME: this does not work! CK
