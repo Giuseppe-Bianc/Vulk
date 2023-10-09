@@ -179,14 +179,4 @@ For Visual Studio, give the build configuration (Release, RelWithDeb, Debug, etc
     cmake --build ./build -- /p:configuration=Release
 
 
-### Running the tests
-
-You can use the `ctest` command run the tests.
-
-```shell
-cd ./build
-ctest -C Debug
-cd ../
-```
-
 
