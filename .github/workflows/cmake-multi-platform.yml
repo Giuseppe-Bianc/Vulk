@@ -68,27 +68,27 @@ jobs:
         unzip glm.zip -d $GLM_TEMP_DIR
       shell: bash
 
-    #- name: Move GLM Library to Vulkan SDK Folder
-    #  run: |
-    #    VULKAN_SDK_PATH="$VULKAN_SDK"
-    #    GLM_TEMP_DIR="${{ steps.strings.outputs.build-output-dir }}/glm-temp"
+    - name: Move GLM Library to Vulkan SDK Folder
+      run: |
+        VULKAN_SDK_PATH="$VULKAN_SDK"
+        GLM_TEMP_DIR="${{ steps.strings.outputs.build-output-dir }}/glm-temp"
 
         # Create the glm folder in the Vulkan SDK directory
-    #    mkdir -p "$VULKAN_SDK_PATH/glm"
+        mkdir -p "$VULKAN_SDK_PATH/glm"
 
         # Move the GLM headers to the Vulkan SDK directory
-    #    mv "$GLM_TEMP_DIR/glm-$GLM_VERSION/glm" "$VULKAN_SDK_PATH/glm/"
+        mv "$GLM_TEMP_DIR/glm-$GLM_VERSION/glm" "$VULKAN_SDK_PATH/Include/glm/"
 
         # Clean up the temporary directory
-    #    rm -rf "$GLM_TEMP_DIR"
-    #  shell: bash
-    #- name: Configure CMake
-    #  run: >
-    #    cmake -B ${{ steps.strings.outputs.build-output-dir }}
-    #    -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
-    #    -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
-    #    -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
-    #    -S ${{ github.workspace }}
+        rm -rf "$GLM_TEMP_DIR"
+      shell: bash
+    - name: Configure CMake
+      run: >
+        cmake -B ${{ steps.strings.outputs.build-output-dir }}
+        -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
+        -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
+        -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -S ${{ github.workspace }}
 
-    #- name: Build
-    #  run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}
+    - name: Build
+      run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}
