@@ -74,7 +74,7 @@ jobs:
         GLM_TEMP_DIR="${{ steps.strings.outputs.build-output-dir }}/glm-temp"
 
         # Create the glm folder in the Vulkan SDK directory
-        mkdir -p "$VULKAN_SDK_PATH/glm"
+        mkdir -p "$VULKAN_SDK_PATH/Include/glm/"
 
         # Move the GLM headers to the Vulkan SDK directory
         mv "$GLM_TEMP_DIR/glm-$GLM_VERSION/glm" "$VULKAN_SDK_PATH/Include/glm/"
