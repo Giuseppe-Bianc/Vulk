@@ -42,17 +42,17 @@ namespace lve {
         LvePipeline::defaultPipelineConfigInfo(pipelineConfig);
         pipelineConfig.renderPass = renderPass;
         pipelineConfig.pipelineLayout = pipelineLayout;
-        lvePipeline = std::make_unique<LvePipeline>(lveDevice, "../../../shaders/vert.spv", "../../../shaders/frag.spv",
-                                                    pipelineConfig);
+        lvePipeline = std::make_unique<LvePipeline>(lveDevice, VERT_SPV, FRAG_SPV, pipelineConfig);
     }
 
-    void SimpleRenderSystem::renderGameObjects(FrameInfo &frameInfo, std::vector<LveGameObject> &gameObjects) {
+    void SimpleRenderSystem::renderGameObjects(FrameInfo &frameInfo) {
         lvePipeline->bind(frameInfo.commandBuffer);
 
         vkCmdBindDescriptorSets(frameInfo.commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 0, 1,
                                 &frameInfo.globalDescriptorSet, 0, nullptr);
 
-        for(auto const &obj : gameObjects) {
+        for(auto const &[_ /*key*/, obj] : frameInfo.gameObjects) {
+            if(obj.model == nullptr) continue;
             SimplePushConstantData push{};
             push.modelMatrix = obj.transform.mat4();
             push.normalMatrix = obj.transform.normalMatrix();

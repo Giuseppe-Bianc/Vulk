@@ -1,6 +1,7 @@
 #pragma once
 
 #include "lve_camera.hpp"
+#include "lve_game_object.hpp"
 
 // lib
 DISABLE_WARNINGS_PUSH(
@@ -15,5 +16,6 @@ namespace lve {
         VkCommandBuffer commandBuffer;
         LveCamera &camera;
         VkDescriptorSet globalDescriptorSet;
+        LveGameObject::Map &gameObjects;
     };
 }  // namespace lve

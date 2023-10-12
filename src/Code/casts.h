@@ -364,3 +364,51 @@
 #define C_CPCU32T(x) static_cast<const uint32_t *>(static_cast<const void *>(x))
 #define NC_CPCU32T(x) gsl::narrow_cast<const uint32_t *>(static_cast<const void *>(x))
 #define BC_CPCU32T(x) std::bit_cast<const uint32_t *>(x)
+
+namespace TypeSizes {
+    static inline constexpr std::size_t sizeOfBool = sizeof(bool);
+    static inline constexpr std::size_t sizeOfByte = sizeof(std::byte);
+    static inline constexpr std::size_t sizeOfIntPtr = sizeof(std::intptr_t);
+    static inline constexpr std::size_t sizeOfUintPtr = sizeof(std::uintptr_t);
+    static inline constexpr std::size_t sizeOfInt8T = sizeof(std::int8_t);
+    static inline constexpr std::size_t sizeOfInt16T = sizeof(std::int16_t);
+    static inline constexpr std::size_t sizeOfInt32T = sizeof(std::int32_t);
+    static inline constexpr std::size_t sizeOfInt64T = sizeof(std::int64_t);
+    static inline constexpr std::size_t sizeOfUint8T = sizeof(std::uint8_t);
+    static inline constexpr std::size_t sizeOfUint16T = sizeof(std::uint16_t);
+    static inline constexpr std::size_t sizeOfUint32T = sizeof(std::uint32_t);
+    static inline constexpr std::size_t sizeOfUint64T = sizeof(std::uint64_t);
+    static inline constexpr std::size_t sizeOfPtrdiffT = sizeof(std::ptrdiff_t);
+    static inline constexpr std::size_t sizeOfDivT = sizeof(std::div_t);
+    static inline constexpr std::size_t sizeOfLdivT = sizeof(std::ldiv_t);
+    static inline constexpr std::size_t sizeOfChar = sizeof(char);
+    static inline constexpr std::size_t sizeOfChar16T = sizeof(char16_t);
+    static inline constexpr std::size_t sizeOfChar32T = sizeof(char32_t);
+    static inline constexpr std::size_t sizeOfChar8T = sizeof(char8_t);
+    static inline constexpr std::size_t sizeOfDouble = sizeof(double);
+    static inline constexpr std::size_t sizeOfFloat = sizeof(float);
+    static inline constexpr std::size_t sizeOfInt = sizeof(int);
+    static inline constexpr std::size_t sizeOfLong = sizeof(long);
+    static inline constexpr std::size_t sizeOfLongDouble = sizeof(long double);
+    static inline constexpr std::size_t sizeOfLongInt = sizeof(long int);
+    static inline constexpr std::size_t sizeOfLongLong = sizeof(long long);
+    static inline constexpr std::size_t sizeOfLongLongInt = sizeof(long long int);
+    static inline constexpr std::size_t sizeOfShort = sizeof(short);
+    static inline constexpr std::size_t sizeOfShortInt = sizeof(short int);
+    static inline constexpr std::size_t sizeOfUChar = sizeof(unsigned char);
+    static inline constexpr std::size_t sizeOfUInt = sizeof(unsigned int);
+    static inline constexpr std::size_t sizeOfULong = sizeof(unsigned long);
+    static inline constexpr std::size_t sizeOfULongInt = sizeof(unsigned long int);
+    static inline constexpr std::size_t sizeOfULongLong = sizeof(unsigned long long);
+    static inline constexpr std::size_t sizeOfULongLongInt = sizeof(unsigned long long int);
+    static inline constexpr std::size_t sizeOfString = sizeof(std::string);
+    static inline constexpr std::size_t sizeOfWString = sizeof(std::wstring);
+    static inline constexpr std::size_t sizeOfU8String = sizeof(std::u8string);
+    static inline constexpr std::size_t sizeOfU16String = sizeof(std::u16string);
+    static inline constexpr std::size_t sizeOfU32String = sizeof(std::u32string);
+    static inline constexpr std::size_t sizeOfStringView = sizeof(std::string_view);
+    static inline constexpr std::size_t sizeOfWStringView = sizeof(std::wstring_view);
+    static inline constexpr std::size_t sizeOfU8StringView = sizeof(std::u8string_view);
+    static inline constexpr std::size_t sizeOfU16StringView = sizeof(std::u16string_view);
+    static inline constexpr std::size_t sizeOfU32StringView = sizeof(std::u32string_view);
+}  // namespace TypeSizes
