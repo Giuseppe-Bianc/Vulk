@@ -59,23 +59,18 @@ jobs:
 
     - name: Download GLM Library ad Move GLM Library to Vulkan SDK Folder
       run: |
+        VULKAN_SDK_PATH="$VULKAN_SDK"
         GLM_VERSION="0.9.9.8" # Set the GLM version you want to download
         GLM_DOWNLOAD_URL="https://github.com/g-truc/glm/archive/${GLM_VERSION}.zip"
-        GLM_TEMP_DIR="${{ steps.strings.outputs.build-output-dir }}/glm-temp"
+        GLM_DIR="$VULKAN_SDK_PATH/Include/glm/"
 
         mkdir -p $GLM_TEMP_DIR
         curl -L -o glm.zip $GLM_DOWNLOAD_URL
-        unzip glm.zip -d $GLM_TEMP_DIR
-        VULKAN_SDK_PATH="$VULKAN_SDK"
+        mkdir -p $GLM_DIR
+        unzip glm.zip -d $GLM_DIR
 
         # Create the glm folder in the Vulkan SDK directory
-        mkdir -p "$VULKAN_SDK_PATH/Include/glm/"
 
-        # Move the GLM headers to the Vulkan SDK directory
-        mv "$GLM_TEMP_DIR/glm" "$VULKAN_SDK_PATH/Include/glm/"
-
-        # Clean up the temporary directory
-        rm -rf "$GLM_TEMP_DIR"
       shell: bash
     - name: Configure CMake
       run: >
