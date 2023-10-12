@@ -66,7 +66,6 @@ jobs:
 
         mkdir -p $GLM_TEMP_DIR
         curl -L -o glm.zip $GLM_DOWNLOAD_URL
-        mkdir -p $GLM_DIR
         unzip glm.zip -d $GLM_DIR
 
         # Create the glm folder in the Vulkan SDK directory
