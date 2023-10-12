@@ -152,40 +152,11 @@ template <typename OStream, typename T, glm::qualifier Q> inline OStream &operat
         }                                                                                                                        \
     } while(0)
 
-/*template <typename EnumType> static constexpr std::string VulkanEnumToString(EnumType value) {
-    static_assert(std::is_enum_v<EnumType>, "EnumType deve essere un tipo di enumerazione.");
-
-    // Utilizza una serie di if constexpr per selezionare la funzione appropriata da vk_enum_string_helper.h
-    if constexpr(std::is_same_v<EnumType, VkResult>) {
-        LINFO("called");
-        return string_VkResult(value);
-    } else if constexpr(std::is_same_v<EnumType, VkFormat>) {
-        return string_VkFormat(value);
-    } else if constexpr(std::is_same_v<EnumType, VkStructureType>) {
-        return strig_VkStructureType(value);
-    } else if constexpr(std::is_same_v<EnumType, VkPipelineCacheHeaderVersion>) {
-        return string_VkPipelineCacheHeaderVersion(value);
-    } else if constexpr(std::is_same_v<EnumType, VkImageLayout>) {
-        return string_VkImageLayout(value);
-    } else if constexpr(std::is_same_v<EnumType, VkObjectType>) {
-        return string_VkObjectType(value);
-    } else if constexpr(std::is_same_v<EnumType, VkVendorId>) {
-        return string_VkVendorId(value);
-    } else if constexpr(std::is_same_v<EnumType, VkInternalAllocationType>) {
-        return string_VkInternalAllocationType(value);
-    } else if constexpr(std::is_same_v<EnumType, VkImageTiling>) {
-        return string_VkImageTiling(value);
-    }
-    LINFO("type ={}", typeid(EnumType).name());
-    throw std::invalid_argument("Tipo di enumerazione non supportato.");
-}
-#define VKENUM_TO_STRING(x) VulkanEnumToString<decltype(x)>(x)
-#define VKTRACE_ENUM(x) SPDLOG_TRACE("result = {}", VKENUM_TO_STRING(x))
-#define VKDEBUG_ENUM(x) SPDLOG_DEBUG("result = {}", VKENUM_TO_STRING(x))
-#define VKINFO_ENUM(x) SPDLOG_INFO("result = {}", VKENUM_TO_STRING(x))
-#define VKWARN_ENUM(x) SPDLOG_WARN("result = {}", VKENUM_TO_STRING(x))
-#define VKERROR_ENUM(x) SPDLOG_ERROR("result = {}", VKENUM_TO_STRING(x))
-#define VKCRITICAL_ENUM(x) SPDLOG_CRITICAL("result = {}", VKENUM_TO_STRING(x)) */
+static inline constexpr auto VERT_SPV = "../../../shaders/vert.spv";
+static inline constexpr auto FRAG_SPV = "../../../shaders/frag.spv";
+static inline constexpr auto FLAT_VASE = "../../../models/flat_vase.obj";
+static inline constexpr auto SMOOTH_VASE = "../../../models/smooth_vase.obj";
+static inline constexpr auto QUAD = "../../../models/quad.obj";
 static inline constexpr long double infinity = std::numeric_limits<long double>::infinity();
 static inline constexpr long double pi = std::numbers::pi_v<long double>;
 static inline constexpr long double twoPi = 2 * pi;
@@ -205,8 +176,4 @@ static inline constexpr double invStWMinusOne = 1.0 / C_D(ST_w - 1);
 static inline constexpr unsigned long long doublesize = sizeof(double);
 static inline constexpr std::string_view windowTitle = "Vulkan window";
 
-#pragma optimize("gt", on)
-static constexpr void printVector(const std::vector<std::string> &vec) {
-    for(const std::string &element : vec) { LINFO("\t\t{}", element); }
-}
 // NOLINTEND
