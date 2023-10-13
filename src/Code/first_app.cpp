@@ -3,12 +3,13 @@
 #include "keyboard_movement_controller.hpp"
 #include "lve_buffer.hpp"
 #include "lve_camera.hpp"
-#include "simple_render_system.hpp"
+#include "systems/simple_render_system.hpp"
 
 namespace lve {
     DISABLE_WARNINGS_PUSH(4324 26455 26446)
     struct GlobalUbo {
-        glm::mat4 projectionView{1.f};
+        glm::mat4 projection{1.f};
+        glm::mat4 view{1.f};
         glm::vec4 ambientLightColor{1.f, 1.f, 1.f, .02f};  // w is intensity
         glm::vec3 lightPosition{-1.f};
         alignas(16) glm::vec4 lightColor{1.f};
@@ -83,7 +84,8 @@ namespace lve {
                 FrameInfo frameInfo{frameIndex, frameTime, commandBuffer, camera, globalDescriptorSets[frameIndex], gameObjects};
                 // update
                 GlobalUbo ubo{};
-                ubo.projectionView = camera.getProjection() * camera.getView();
+                ubo.projection = camera.getProjection();
+                ubo.view = camera.getView();
                 uboBuffers[frameIndex]->writeToBuffer(&ubo);
                 uboBuffers[frameIndex]->flush();
 
