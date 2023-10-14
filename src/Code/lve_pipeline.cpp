@@ -20,7 +20,7 @@ namespace lve {
         if(!std::filesystem::exists(filepath)) { throw VKRAppError("File not found: " + filepath); }
         std::ifstream file{filepath, std::ios::ate | std::ios::binary};
         if(!file.is_open()) { throw VKRAppError("Failed to open file: " + filepath); }
-        const auto fileSize = static_cast<size_t>(file.tellg());
+        const auto fileSize = C_ST(file.tellg());
 
         std::vector<char> buffer(fileSize);
 
@@ -58,8 +58,8 @@ namespace lve {
                            .pName = "main",
                            .pSpecializationInfo = nullptr};
 
-        auto bindingDescriptions = LveModel::Vertex::getBindingDescriptions();
-        auto attributeDescriptions = LveModel::Vertex::getAttributeDescriptions();
+        auto &bindingDescriptions = configInfo.bindingDescriptions;
+        auto &attributeDescriptions = configInfo.attributeDescriptions;
         VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
         vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
         vertexInputInfo.vertexAttributeDescriptionCount = NC_UI32T(attributeDescriptions.size());
@@ -171,6 +171,9 @@ namespace lve {
         configInfo.dynamicStateInfo.pDynamicStates = configInfo.dynamicStateEnables.data();
         configInfo.dynamicStateInfo.dynamicStateCount = NC_UI32T(configInfo.dynamicStateEnables.size());
         configInfo.dynamicStateInfo.flags = 0;
+
+        configInfo.bindingDescriptions = LveModel::Vertex::getBindingDescriptions();
+        configInfo.attributeDescriptions = LveModel::Vertex::getAttributeDescriptions();
     }
     DISABLE_WARNINGS_POP()
 }  // namespace lve

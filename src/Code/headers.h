@@ -154,6 +154,8 @@ template <typename OStream, typename T, glm::qualifier Q> inline OStream &operat
 
 static inline constexpr auto VERT_SPV = "../../../shaders/vert.spv";
 static inline constexpr auto FRAG_SPV = "../../../shaders/frag.spv";
+static inline constexpr auto POINTLV_SPV = "../../../shaders/point_light_vert.spv";
+static inline constexpr auto POINTLF_SPV = "../../../shaders/point_light_frag.spv";
 static inline constexpr auto FLAT_VASE = "../../../models/flat_vase.obj";
 static inline constexpr auto SMOOTH_VASE = "../../../models/smooth_vase.obj";
 static inline constexpr auto QUAD = "../../../models/quad.obj";

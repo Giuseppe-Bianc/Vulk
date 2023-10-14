@@ -1,6 +1,5 @@
 # add_subdirectory(systems)
-file(GLOB_RECURSE SOURCES "*.cpp"         "*.h"         "*.hpp" 
-                          "systems/*.cpp" "systems/*.h" "systems/*.hpp")
+file(GLOB_RECURSE SOURCES "*.cpp" "*.h" "*.hpp")
 
 
 find_package(Vulkan REQUIRED)
