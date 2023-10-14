@@ -75,8 +75,8 @@ namespace lve {
     public:
         LveDescriptorWriter(LveDescriptorSetLayout &setLayout, LveDescriptorPool &pool) noexcept;
 
-        LveDescriptorWriter &writeBuffer(uint32_t binding, VkDescriptorBufferInfo *bufferInfo);
-        LveDescriptorWriter &writeImage(uint32_t binding, VkDescriptorImageInfo *imageInfo);
+        LveDescriptorWriter &writeBuffer(uint32_t binding, const VkDescriptorBufferInfo *bufferInfo);
+        LveDescriptorWriter &writeImage(uint32_t binding, const VkDescriptorImageInfo *imageInfo);
 
         bool build(VkDescriptorSet &set) noexcept;
         void overwrite(VkDescriptorSet &set) noexcept;

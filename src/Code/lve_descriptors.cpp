@@ -109,7 +109,7 @@ namespace lve {
     LveDescriptorWriter::LveDescriptorWriter(LveDescriptorSetLayout &setLayout, LveDescriptorPool &pool) noexcept
       : setLayout{setLayout}, pool{pool} {}
 
-    LveDescriptorWriter &LveDescriptorWriter::writeBuffer(uint32_t binding, VkDescriptorBufferInfo *bufferInfo) {
+    LveDescriptorWriter &LveDescriptorWriter::writeBuffer(uint32_t binding, const VkDescriptorBufferInfo *bufferInfo) {
         assert(setLayout.bindings.count(binding) == 1 && "Layout does not contain specified binding");
 
         auto const &bindingDescription = setLayout.bindings[binding];
@@ -127,7 +127,7 @@ namespace lve {
         return *this;
     }
 
-    LveDescriptorWriter &LveDescriptorWriter::writeImage(uint32_t binding, VkDescriptorImageInfo *imageInfo) {
+    LveDescriptorWriter &LveDescriptorWriter::writeImage(uint32_t binding, const VkDescriptorImageInfo *imageInfo) {
         assert(setLayout.bindings.count(binding) == 1 && "Layout does not contain specified binding");
 
         auto const &bindingDescription = setLayout.bindings[binding];
