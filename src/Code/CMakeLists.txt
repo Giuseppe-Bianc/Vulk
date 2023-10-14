@@ -1,4 +1,4 @@
-add_subdirectory(systems)
+# add_subdirectory(systems)
 file(GLOB_RECURSE SOURCES "*.cpp"         "*.h"         "*.hpp" 
                           "systems/*.cpp" "systems/*.h" "systems/*.hpp")
 
